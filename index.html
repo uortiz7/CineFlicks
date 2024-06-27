@@ -3,18 +3,58 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Buscador de Películas</title>
+    <title>CineFlicks - Inicio</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="palomitas.png" type="image/png">
 </head>
 <body>
-    <div class="container">
-        <h1>Buscador de Películas</h1>
+    <header>
+        <a href="index.html">
+            <img src="palomitas.png" alt="pochoclos">
+            CineFlicks
+        </a>
         <form id="movieForm">
-            <input type="text" id="movie" placeholder="Introduce el nombre de la película" required>
+            <input type="text" id="movie" placeholder="Buscar en CineFlicks" required>
             <button type="submit">Buscar</button>
         </form>
-        <div id="movieResult"></div>
+    </header>
+
+    <div class="container">
+        <h2>Películas de Acción</h2>
+        <div class="carousel-container">
+            <button class="carousel-btn left" id="actionMovies-left">&lt;</button>
+            <div class="carousel" id="actionMovies"></div>
+            <button class="carousel-btn right" id="actionMovies-right">&gt;</button>
+        </div>
+
+        <h2>Películas de Comedia</h2>
+        <div class="carousel-container">
+            <button class="carousel-btn left" id="comedyMovies-left">&lt;</button>
+            <button class="carousel-btn right" id="comedyMovies-right">&gt;</button>
+            <div class="carousel" id="comedyMovies"></div>
+        </div>
+
+        <h2>Películas de Drama</h2>
+        <div class="carousel-container">
+            <button class="carousel-btn left" id="dramaMovies-left">&lt;</button>
+            <button class="carousel-btn right" id="dramaMovies-right">&gt;</button>
+            <div class="carousel" id="dramaMovies"></div>
+        </div>
+
+        <h2>Películas de Terror</h2>
+        <div class="carousel-container">
+            <button class="carousel-btn left" id="horrorMovies-left">&lt;</button>
+            <button class="carousel-btn right" id="horrorMovies-right">&gt;</button>
+            <div class="carousel" id="horrorMovies"></div>
+        </div>
+
+        <h2>Películas Románticas</h2>
+        <div class="carousel-container">
+            <button class="carousel-btn left" id="romanceMovies-left">&lt;</button>
+            <button class="carousel-btn right" id="romanceMovies-right">&gt;</button>
+            <div class="carousel" id="romanceMovies"></div>
+        </div>
     </div>
-    <script src="script.js"></script>
+    <script src="./js/script.js"></script>
 </body>
 </html>

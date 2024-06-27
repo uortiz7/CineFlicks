@@ -1,75 +1,227 @@
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    background: #08090A;
+    color: #fff;
     margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
 }
 
-.container {
-    background: white;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+/* Header Styles */
+header {
+    background: #000;
+    padding: 10px;
     text-align: center;
-    width: 80%;
-    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+header a {
+    margin: 5px 10px;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    color: #FF5500;
+    text-decoration: none;
+    font-size: 2rem;
+}
+header a img{
+    margin: 0 10px 0 0;
+    width: 30px;
+    height: auto;
 }
 
+/* Form Styles */
+form {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 10px;
+}
 input {
-    padding: 10px;
     border: 1px solid #ccc;
+    background: transparent;
     border-radius: 4px;
-    width: calc(100% - 22px);
-}
-
-button {
+    color: #ccc;
+    width: 100%;
+    margin-bottom: 10px;
     padding: 10px;
-    background-color: #007BFF;
-    color: white;
+}
+button {
+    background: #fff;
+    color: #000;
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    margin-top: 10px;
+    padding: 10px;
+    width: 100%;
 }
-
 button:hover {
-    background-color: #0056b3;
+    background: #000;
+    border: 1px solid #ccc;
+    color: #fff;
+    padding: 10px 20px;
+    transition: 0.3s ease-in-out, 0.3s ease-in-out;
 }
 
-#movieResult {
-    margin-top: 20px;
+/* Container Styles */
+.container {
+    padding: 15px;
+    border-radius: 8px;
+    text-align: center;
+    width: 100%;
+    max-width: 1400px;
+    margin: auto;
+}
+h2 {
     text-align: left;
+    margin: 10px 0;
+}
+
+/* Carousel Styles */
+/* Carousel Styles */
+.carousel-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    margin: 0 auto;
+    padding: 0 40px; /* Asegura espacio para los botones */
+}
+.carousel {
+    display: flex;
+    gap: 10px;
+    padding: 10px;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    width: 100%; /* Ajusta para ocupar todo el espacio del contenedor */
+}
+.movie-scroll {
+    flex: 0 0 auto; /* No se expande, tamaño fijo */
+    width: 200px; /* Ancho fijo del contenedor */
+    height: 300px; /* Altura fija del contenedor */
+    border-radius: 8px; /* Borde redondeado */
+    overflow: hidden; /* Oculta el contenido que sobresale */
+    display: flex; /* Usa flexbox */
+    justify-content: center; /* Centra horizontalmente */
+    align-items: center; /* Centra verticalmente */
+    position: relative; /* Posición relativa para el hover */
+}
+.movie-scroll img {
+    width: auto; /* Ancho automático */
+    height: 100%; /* Ocupa toda la altura del contenedor */
+    margin: 0 auto; /* Centra horizontalmente */
+    transition: transform 0.3s ease; /* Transición suave */
+}
+.movie-scroll:hover img {
+    transform: scale(1.1); /* Aumenta ligeramente al pasar el hover */
+}
+
+/* Carousel Button Styles */
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1; /* Asegura que estén sobre el carrusel */
+    opacity: 0.7; /* Hace las flechas menos prominentes */
+    transition: opacity 0.3s ease;
+}
+.carousel-btn:hover {
+    opacity: 1; /* Aumenta la opacidad al pasar el mouse */
+}
+.carousel-btn.left {
+    left: 10px; /* Ajusta la posición para que no se solape */
+}
+.carousel-btn.right {
+    right: 10px; /* Ajusta la posición para que no se solape */
+}
+.carousel::-webkit-scrollbar {
+    display: none;
+}
+
+/* Responsive Styles */
+@media (min-width: 550px) {
+    header {
+        flex-direction: row;
+        justify-content: space-between;
+        text-align: left;
+    }
+
+    form {
+        flex-direction: row;
+        width: auto;
+        margin: 0;
+    }
+
+    input {
+        margin-bottom: 0;
+        width: auto;
+        margin-right: 10px;
+    }
+
+    button {
+        width: auto;
+    }
+}
+
+@media (min-width: 1024px) {
+    .carousel {
+        gap: 20px;
+    }
+
+    .movie-scroll {
+        width: 200px;
+    }
+}
+
+/* Movie Result Styles */
+#movieResult {
+    margin: 25px auto;
+    text-align: left;
+    color: #fff;
+    max-width: 1200px;
+}
+
+.movie-title {
+    margin: 10px 10px 25px 10px;
+    font-size: 2rem;
+    text-align: center;
 }
 
 .movie-item {
-    margin-bottom: 20px;
-    border-bottom: 1px solid #ddd;
-    padding-bottom: 10px;
+    flex-direction: column; /* Cambia la dirección del flex a columna */
+    align-items: center; /* Centra los elementos horizontalmente */
+    text-align: center; /* Centra el texto */
 }
 
-.movie-item h2 {
-    margin: 0;
-    font-size: 20px;
+.movie-image img {
+    width: auto;
+    max-width: 300px;
+    margin-bottom: 10px; /* Espacio entre la imagen y los detalles */
 }
 
-.movie-item p {
-    margin: 5px 0;
+.movie-details {
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
 }
 
-.movie-item a {
-    color: #007BFF;
-    text-decoration: none;
-}
-
-.movie-item a:hover {
-    text-decoration: underline;
-}
-
-.movie-item img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 8px;
+.movie-details p {
+    margin: 10px;
 }
