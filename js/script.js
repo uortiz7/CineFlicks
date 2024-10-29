@@ -36,32 +36,59 @@ document.addEventListener('DOMContentLoaded', function() {
                 console.error('Error al obtener los datos:', error);
             });
     }
+    
+    if (window.innerWidth > 550) {
+        let genreMovies = ["actionMovies", "comedyMovies", "horrorMovies", "dramaMovies", "romanceMovies"];
 
-    function setupCarouselScroll(carouselId, leftBtnId, rightBtnId) {
-        const carousel = document.getElementById(carouselId);
-        const leftBtn = document.getElementById(leftBtnId);
-        const rightBtn = document.getElementById(rightBtnId);
+        // Crear botónes
+        for (const genre of genreMovies) {
+            const leftButton = document.createElement("button");
+            const rightButton = document.createElement("button");
 
-        leftBtn.addEventListener('click', () => {
-            carousel.scrollBy({ left: -carousel.clientWidth, behavior: 'smooth' });
-        });
+            leftButton.className = "carousel-btn left";
+            rightButton.className = "carousel-btn right";
+            
+            // Asignar clase, id y contenido de texto
+            leftButton.id = `${genre}-left`;
+            rightButton.id = `${genre}-right`;
 
-        rightBtn.addEventListener('click', () => {
-            carousel.scrollBy({ left: carousel.clientWidth, behavior: 'smooth' });
-        });
+            leftButton.innerHTML = "&lt;"; // Esto agrega el símbolo "<" al botón
+            rightButton.innerHTML = "&gt;"; // Esto agrega el símbolo ">" al botón
+            
+            // Insertarlo en el DOM (por ejemplo, en un contenedor específico)
+            const container = document.getElementById(`${genre}-container`); // Contenedor específico para cada género
+            container.appendChild(leftButton);
+            container.appendChild(rightButton);
+
+            console.log(container); // Agrega esto para verificar si el contenedor es encontrado
+        }
+        
+        function setupCarouselScroll(carouselId, leftBtnId, rightBtnId) {
+            const carousel = document.getElementById(carouselId);
+            const leftBtn = document.getElementById(leftBtnId);
+            const rightBtn = document.getElementById(rightBtnId);
+            
+            leftBtn.addEventListener('click', () => {
+                carousel.scrollBy({ left: -carousel.clientWidth, behavior: 'smooth' });
+            });
+
+            rightBtn.addEventListener('click', () => {
+                carousel.scrollBy({ left: carousel.clientWidth, behavior: 'smooth' });
+            });
+        }
+        
+        setupCarouselScroll('actionMovies', 'actionMovies-left', 'actionMovies-right');
+        setupCarouselScroll('comedyMovies', 'comedyMovies-left', 'comedyMovies-right');
+        setupCarouselScroll('dramaMovies', 'dramaMovies-left', 'dramaMovies-right');
+        setupCarouselScroll('horrorMovies', 'horrorMovies-left', 'horrorMovies-right');
+        setupCarouselScroll('romanceMovies', 'romanceMovies-left', 'romanceMovies-right');
     }
-
+    
     fetchMoviesByGenre('Action', 'actionMovies');
     fetchMoviesByGenre('Comedy', 'comedyMovies');
     fetchMoviesByGenre('Drama', 'dramaMovies');
     fetchMoviesByGenre('Horror', 'horrorMovies');
     fetchMoviesByGenre('Romance', 'romanceMovies');
-
-    setupCarouselScroll('actionMovies', 'actionMovies-left', 'actionMovies-right');
-    setupCarouselScroll('comedyMovies', 'comedyMovies-left', 'comedyMovies-right');
-    setupCarouselScroll('dramaMovies', 'dramaMovies-left', 'dramaMovies-right');
-    setupCarouselScroll('horrorMovies', 'horrorMovies-left', 'horrorMovies-right');
-    setupCarouselScroll('romanceMovies', 'romanceMovies-left', 'romanceMovies-right');
 
     document.getElementById('movieForm').addEventListener('submit', function(event) {
         event.preventDefault();
